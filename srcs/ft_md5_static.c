@@ -39,16 +39,3 @@ int      *k_tab()
     
     return k_tab;
 }
-
-/**
- * Words
- * A B C D
- **/
-int  *w_tab()
-{
-    static int w_tab[4] = {
-        0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476
-    };
-    
-    return w_tab;
-}
