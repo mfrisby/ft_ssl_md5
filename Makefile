@@ -1,7 +1,7 @@
 NAME =		ft_ssl
 
 SRCS = 		srcs/ft_ssl.c srcs/init.c srcs/ft_md5.c srcs/ft_md5_static.c \
-			srcs/ft_md5_aux.c
+			srcs/ft_md5_aux.c srcs/ft_md5_abcd_words.c
 
 INCS = 	-I ./incs
 
