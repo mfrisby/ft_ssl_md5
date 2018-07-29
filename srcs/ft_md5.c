@@ -15,8 +15,10 @@ Next, each block is divided into 16 words of 32 bits each. These are denoted as 
 /*
  * produit un message de 128bits
  */
-char       *ft_md5()
+char       *ft_md5(char *input)
 {
+    printf("%f\n", (floor(ft_strlen(input)/512)));
+    //int size = sizeof(input)/512;
     ft_printf("output f = %d\n", f_aux(00001100, 00011001, 00001000));
     ft_printf("output g = %d\n", g_aux(00001100, 00011001, 00001000));
     ft_printf("output h = %d\n", h_aux(00001100, 00011001, 00001000));
@@ -31,5 +33,6 @@ char       *ft_md5()
     // s = s_tab();
     // k = k_tab();
     // w = w_tab();
-    return (NULL);
+//    input = ft_strdup("9e107d9d372bb6826bd81d3542a419d6");
+    return (input);
 }
