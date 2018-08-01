@@ -15,6 +15,12 @@ void     test_md5()
         ft_putendl("test failed 2");
     else
         ft_putendl("test succeed 2");
+
+     ret = ft_md5("The quick brown fox jumps over the lazy dog.00000000000000000000000The quick brown fox jumps over the lazy dog.00000000000000000000000The quick brown fox jumps over the lazy dog.00000000000000000000000The quick brown fox jumps over the lazy dog.00000000000000000000000The quick brown fox jumps over the lazy dog.00000000000000000000000The quick brown fox jumps over the lazy dog.00000000000000000000000The quick brown fox jumps over the lazy dog.00000000000000000000000The quick brown fox jumps over the lazy dog.00000000000000000000000The quick brown fox jumps over the lazy dog.00000000000000000000000The quick brown fox jumps over the lazy dog.00000000000000000000000The quick brown fox jumps over the lazy dog.00000000000000000000000The quick brown fox jumps over the lazy dog.00000000000000000000000The quick brown fox jumps over the lazy dog.00000000000000000000000The quick brown fox jumps over the lazy dog.00000000000000000000000");
+    if ((ft_strcmp(ret, "e4d909c290d0fb1ca068ffaddf22cbd0")) != 0)
+        ft_putendl("test failed 2");
+    else
+        ft_putendl("test succeed 2"); 
 }
 
 int     main(int ac, char **av)

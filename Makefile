@@ -1,7 +1,7 @@
 NAME =		ft_ssl
 
 SRCS = 		srcs/ft_ssl.c srcs/init.c srcs/ft_md5.c srcs/ft_md5_static.c \
-			srcs/ft_md5_aux.c srcs/ft_md5_abcd_words.c
+			srcs/ft_md5_aux.c srcs/ft_md5_abcd_words.c srcs/bits_rotate_32.c \
 
 INCS = 	-I ./incs
 
@@ -23,10 +23,12 @@ objs:
 			@mkdir -p objs
 
 clean:
+	@libft clean
 	@rm -rf objs
 	@echo "\033[33mclean done\033[m"
 
 fclean: 		clean
+	@libft fclean
 	@/bin/rm -f $(NAME)
 	@echo "\033[33mfclean done\033[m"
 
