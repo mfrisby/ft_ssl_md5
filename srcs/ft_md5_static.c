@@ -1,4 +1,6 @@
 #include "../incs/ft_ssl.h"
+#include <stdlib.h>
+#include <math.h>
 
 int        *s_tab()
 {
@@ -16,9 +18,9 @@ int        *s_tab()
  * k_tab can be initialized by
  * k_tab[i] = floor(232 × abs(sin(i + 1)))
  **/
-int      *k_tab()
+int      *r_tab()
 {
-    static int k_tab[64] = {
+    static int r_tab[64] = {
         0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,
         0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501,
         0x698098d8, 0x8b44f7af, 0xffff5bb1, 0x895cd7be,
@@ -37,5 +39,21 @@ int      *k_tab()
         0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391
     };
     
-    return k_tab;
+    return r_tab;
+}
+
+int         *k_tab()
+{
+    int     i;
+    static int k_tab[64] = NULL;
+
+    if (k_tab != NULL)
+        return (k_tab);
+    i = 0;
+    while (i < 64)
+    {
+        k_tab[i] = abs(sin(i + 1)) * (pow(2, 32));
+        i++;
+    }
+    return (k_tab);
 }

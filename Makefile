@@ -23,12 +23,12 @@ objs:
 			@mkdir -p objs
 
 clean:
-	@libft clean
+	@make -C libft/ clean
 	@rm -rf objs
 	@echo "\033[33mclean done\033[m"
 
 fclean: 		clean
-	@libft fclean
+	@make -C libft/ fclean
 	@/bin/rm -f $(NAME)
 	@echo "\033[33mfclean done\033[m"
 

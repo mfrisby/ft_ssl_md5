@@ -27,6 +27,7 @@ typedef struct      s_env
 int     parse_entry(t_env *e,int ac, char **av);
 char    *ft_md5(char *input);
 int     *w_tab();
+int     *r_tab();
 int     *k_tab();
 int     *s_tab();
 int     f_aux(int x, int y, int z);

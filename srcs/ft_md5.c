@@ -16,32 +16,6 @@ static char    **init_tab(int divide, char *input)
     return (new);
 }
 
-void        divide_64(t_md5 *md5)
-{
-    int     y;
-    
-    y = 0;
-    while (y < 64)
-    {
-        if (y >= 0 && y <= 15)
-        {
-            md5->f = f_aux(md5->b, md5->c, md5->d);
-            md5->g = y;
-        }
-        else if (y > 15 && y <= 31)
-        {
-            md5->f = f_aux(md5->d, md5->b, md5->c);
-            md5->g = (3*y + 5) % 16; 
-        }
-        //f += md5->a + k[i] + m[g];
-        md5->a = md5->d;
-        md5->d = md5->c;
-        md5->c = md5->b;
-      //  md5->b = md5->b + left_rotate_32(md5->f, s_tab()[i]);
-        y++;
-    }
-}
-
 char        **init_m_16(t_md5 *md5, char **m, int i)
 {
     int y;
@@ -57,10 +31,45 @@ char        **init_m_16(t_md5 *md5, char **m, int i)
     return (m);
 }
 
+void        divide_64(t_md5 *md5, char **m16)
+{
+    int     y;
+    
+    y = 0;
+    while (y < 64)
+    {
+        if (y >= 0 && y <= 15)
+        {
+            md5->f = f_aux(md5->b, md5->c, md5->d);
+            md5->g = y;
+        }
+        else if (y > 15 && y <= 31)
+        {
+            md5->f = f_aux(md5->d, md5->b, md5->c);
+            md5->g = (5 * y + 1) % 16; 
+        }
+        else if (y > 31 && y <= 47)
+        {
+            md5->f = h_aux(md5->b, md5->c, md5->d));
+            md5->g = (3 * y + 5) % 16; 
+        }
+        else if (y > 47 && y <= 63)
+        {
+            md5->f = i_aux(md5->c, md5->b, md5->d);
+            md5->g = (7 * y) % 16;
+        }
+        md5->d = md5->c;
+        md5->c = md5->b;
+        //md5->b = (md5->a + md5->f + (k_tab())[y] + m16[g]);// * left_rotate_32 r[i] + b
+        md5->a = md5->d;
+        y++;
+    }
+}
+
 void        divide_512(int divide, t_md5 *md5)
 {
     int     i;
-    char    **m;
+    char    **m16;
 
     i = 0;
     m16 = malloc(sizeof(char*) * 17);
@@ -75,7 +84,7 @@ void        divide_512(int divide, t_md5 *md5)
         md5->b = b_word(1, 0);
         md5->c = c_word(1, 0);
         md5->d = d_word(1, 0);
-        divide_64(md5);
+        divide_64(md5, m16);
         values_setter(md5->a, md5->b, md5->c, md5->d);
         i++;
     }
