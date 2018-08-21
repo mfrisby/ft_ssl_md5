@@ -36,6 +36,7 @@ void        divide_64(t_md5 *md5, char **m16)
     int     y;
     
     y = 0;
+    (void)m16;
     while (y < 64)
     {
         if (y >= 0 && y <= 15)
@@ -50,7 +51,7 @@ void        divide_64(t_md5 *md5, char **m16)
         }
         else if (y > 31 && y <= 47)
         {
-            md5->f = h_aux(md5->b, md5->c, md5->d));
+            md5->f = h_aux(md5->b, md5->c, md5->d);
             md5->g = (3 * y + 5) % 16; 
         }
         else if (y > 47 && y <= 63)

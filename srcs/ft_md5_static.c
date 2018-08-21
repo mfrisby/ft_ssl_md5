@@ -41,19 +41,3 @@ int      *r_tab()
     
     return r_tab;
 }
-
-int         *k_tab()
-{
-    int     i;
-    static int k_tab[64] = NULL;
-
-    if (k_tab != NULL)
-        return (k_tab);
-    i = 0;
-    while (i < 64)
-    {
-        k_tab[i] = abs(sin(i + 1)) * (pow(2, 32));
-        i++;
-    }
-    return (k_tab);
-}

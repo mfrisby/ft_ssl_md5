@@ -19,12 +19,12 @@ Operators	Meaning of operators
 
 int     f_aux(int x, int y, int z)
 {
-    return ((x & y) | ((!x) & z));
+    return ((x & y) | (~x & z));
 }
 
 int     g_aux(int x, int y, int z)
 {
-    return ((x & z) | (y & (!z)));
+    return ((z & x) | (~z & y));
 }
 
 int     h_aux(int x, int y, int z)
@@ -34,5 +34,5 @@ int     h_aux(int x, int y, int z)
 
 int     i_aux(int x, int y, int z)
 {
-    return (y ^ (x | (!z)));
+    return (y ^ (x |~ z));
 }

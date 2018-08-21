@@ -30,6 +30,7 @@ void    get_argument(t_env *e, char *s)
     e->args[1] = NULL;
 }
 
+//md5 -s string
 void    get_options(t_env *e, char *s)
 {
     if (e->opts == NULL)
